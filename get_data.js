@@ -4,9 +4,9 @@ btn.addEventListener('click', main, false);
 
 function main () {
 	//key is the dev id key, riot api and wmata api are the api's I'm trying to access.
-	var key = '9910cbfe-cf9b-4c46-af93-8c75cb9b99a6';
-	var summToSearch = 'ObeseNightmare';
-	var region = 'na'
+	var key = ''; //insert your own key
+	var summToSearch = ''; //insert your own summmoner name
+	var region = '' //insert your own region
 	var baseApi = 'https://na.api.pvp.net'
 	var summApi = '/api/lol/' + region + '/v1.4/summoner/by-name/' + 
 				summToSearch + '?api_key=';
