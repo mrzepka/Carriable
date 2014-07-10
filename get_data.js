@@ -1,30 +1,28 @@
-var btn = document.getElementById('getRequestButton');
-btn.addEventListener('click', main, false);
+
+/*
+function getInfoFromForm(summonerName, region) {
+	summonerName = document.getElementById("summoner").value;
+	region = document.getElementById("region").value;
+	alert(summonerName + " " + region);
+}
+*/
 
 
 function main () {
-	//key is the dev id key, riot api and wmata api are the api's I'm trying to access.
-	var key = ''; //insert your own key
-	var summToSearch = ''; //insert your own summmoner name
-	var region = '' //insert your own region
+    //key is the dev id key, riot api and wmata api are the api's I'm trying to access.
+    var key = '9910cbfe-cf9b-4c46-af93-8c75cb9b99a6'; //insert your own key
+    var summToSearch = document.getElementById("summoner").value; //insert your own summmoner name
+	var region = document.getElementById("region").value.toLowerCase(); //insert your own region
+	console.log(summToSearch + " " + typeof(region));
+
 	var baseApi = 'https://na.api.pvp.net'
 	var summApi = '/api/lol/' + region + '/v1.4/summoner/by-name/' + 
 				summToSearch + '?api_key=';
 
 	//Here are all the stats we'll need to calculate carriability
-	var deaths = [];
-	var assists = [];
-	var wards = [];
-	var wardsKilled = [];
-
-	var totDeaths = 0;
-	var totAssists = 0;
-	var totWards = 0;
-	var totWardsKilled = 0;
-
+	var deaths = [], assists = [], wards = [], wardsKilled = [];
+	var totDeaths = 0, totAssists = 0, totWards = 0, totWardsKilled = 0;
 	var i;
-
-
 
 
 	//Runs get request via JS, used to get the info needed
@@ -37,18 +35,28 @@ function main () {
 		return xmlHttp.responseText;
 	}
 
+	//gets the game data we need
 	function getGameInfo( game ) {
 		var currWardsPlaced = typeof game.wardPlaced === 'undefined' ? 0 : game.wardPlaced;
 		var currVisionBought = typeof game.visionWardsBought === 'undefined' ? 0 : game.visionWardsBought;
 		var currWardsKilled = typeof game.wardKilled === 'undefined' ? 0 : game.wardKilled;
-		deaths.push(game.numDeaths);
-		assists.push(game.assists);
+		var numDeaths = typeof game.numDeaths === 'undefined' ? 0 : game.numDeaths;
+		var numAssists = typeof game.assists === 'undefined' ? 0 : game.assists;
+		
+		deaths.push(numDeaths);
+		assists.push(numassists);
 		wards.push(currWardsPlaced + currVisionBought);
 		wardsKilled.push(currWardsKilled);
+		
 		console.log('deaths: ' + game.numDeaths);
 		console.log('assists: ' + game.assists);
 		console.log('wards: ' + currWardsPlaced);
 		console.log('wards killed: ' + currWardsKilled);
+	}
+
+	//take game information and populate table in html doc
+	function populateTableRow() {
+
 	}
 
 	//response is the object returned, parsing the string value returned from getHttp
@@ -98,5 +106,3 @@ function main () {
 	console.log(typeof response);
 
 };
-
-alert( "ready" );

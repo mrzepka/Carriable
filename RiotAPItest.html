@@ -1,22 +1,121 @@
 <!doctype html>
 <html>
 <head>
-	<meta></meta>
+	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Riot API Test</title>
 	
 </head>
 <body>
 
 
-<!--
-	<form id="getInfo">
-		Summoner Name: <input type="text" name="summonerName"><br>
-		Region: <input type="text" name="region"><br>
-		<input id='getRequestButton' type="submit" value="Submit">
+	<form class="pure-form" align="center" onsubmit="return main();">
+		<fieldset>
+			<legend>Please enter your summoner name and select your region below!</legend>
+			<input type="text" id="summoner" placeholder="Summoner Name">
+			
+			<label for="region">Region</label>
+			<select id="region" value="value">
+				<option>NA</option>
+				<option>EUW</option>
+			</select>
+			
+			<button type="submit" class="pure-button pure-button-primary">Submit</button>
+		</fieldset>
 	</form>
-	-->
-	<Button id='getRequestButton'>Click for get request</Button>
 
-	<p></p>
+	<table class="pure-table">
+		<thread>
+			<tr>
+				<th>Game</th>
+				<th>Deaths</th>
+				<th>Assists</th>
+				<th>Wards Placed</th>
+				<th>Wards Killed</th>
+			</tr>
+		</thread>
+
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>holder 1</td>
+				<td>holder 2</td>
+				<td>holder 3</td>
+				<td>holder 4</td>
+			</tr>
+
+			<tr>
+				<td>2</td>
+				<td>holder 1</td>
+				<td>holder 2</td>
+				<td>holder 3</td>
+				<td>holder 4</td>
+			</tr>
+
+			<tr>
+				<td>3</td>
+				<td>holder 1</td>
+				<td>holder 2</td>
+				<td>holder 3</td>
+				<td>holder 4</td>
+			</tr>
+
+			<tr>
+				<td>4</td>
+				<td>holder 1</td>
+				<td>holder 2</td>
+				<td>holder 3</td>
+				<td>holder 4</td>
+			</tr>
+
+			<tr>
+				<td>5</td>
+				<td>holder 1</td>
+				<td>holder 2</td>
+				<td>holder 3</td>
+				<td>holder 4</td>
+			</tr>
+
+			<tr>
+				<td>6</td>
+				<td>holder 1</td>
+				<td>holder 2</td>
+				<td>holder 3</td>
+				<td>holder 4</td>
+			</tr>
+
+			<tr>
+				<td>7</td>
+				<td>holder 1</td>
+				<td>holder 2</td>
+				<td>holder 3</td>
+				<td>holder 4</td>
+			</tr>
+
+			<tr>
+				<td>8</td>
+				<td>holder 1</td>
+				<td>holder 2</td>
+				<td>holder 3</td>
+				<td>holder 4</td>
+			</tr>
+
+			<tr>
+				<td>9</td>
+				<td>holder 1</td>
+				<td>holder 2</td>
+				<td>holder 3</td>
+				<td>holder 4</td>
+			</tr>
+
+			<tr>
+				<td>10</td>
+				<td>holder 1</td>
+				<td>holder 2</td>
+				<td>holder 3</td>
+				<td>holder 4</td>
+			</tr>
+		</tbody>
+
 	<script src="get_data.js"></script>
 </body>
