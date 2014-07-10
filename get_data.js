@@ -27,12 +27,11 @@ function main() {
 
 
 		//take game information and populate table in html doc
-	function populateTableRow( gameNum, dth, ast, wp, wk ) {
-		document.getElementById('deathsG' + gameNum).innerHTML = dth;
-		document.getElementById('assistsG' + gameNum).innerHTML = ast;
-		document.getElementById('wpG' + gameNum).innerHTML = wp;
-		document.getElementById('wkG' + gameNum).innerHTML = wk;
-
+	function populateTableRow( gameNum, deathsIn, assistsIn, wardsPlacedIn, wardsKilledIn ) {
+		document.getElementById('deathsG' + gameNum).textContent = deathsIn;
+		document.getElementById('assistsG' + gameNum).textContent = assistsIn;
+		document.getElementById('wpG' + gameNum).textContent = wardsPlacedIn;
+		document.getElementById('wkG' + gameNum).textContent = wardsKilledIn;
 	}
 
 	//gets the game data we need
@@ -80,6 +79,7 @@ function main() {
 	for (game in recentGames){
 		var curr = recentGames[game].stats;
 		getGameInfo( curr, gameNumber );
+		gameNumber += 1;
 	}
 
 	//Calculate totals of last 10 games
@@ -106,5 +106,7 @@ function main() {
 	console.log(response);
 
 	console.log(typeof response);
+
+	return false;
 
 };
