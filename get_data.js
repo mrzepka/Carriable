@@ -1,15 +1,5 @@
-
-/*
-function getInfoFromForm(summonerName, region) {
-	summonerName = document.getElementById("summoner").value;
-	region = document.getElementById("region").value;
-	alert(summonerName + " " + region);
-}
-*/
-
-
-function main () {
-    //key is the dev id key, riot api and wmata api are the api's I'm trying to access.
+function main() {
+    //Set variables for use in get requests
     var key = ''; //insert your own key
     var summToSearch = document.getElementById("summoner").value; //insert your own summmoner name
 	var region = document.getElementById("region").value.toLowerCase(); //insert your own region
@@ -35,8 +25,18 @@ function main () {
 		return xmlHttp.responseText;
 	}
 
+
+		//take game information and populate table in html doc
+	function populateTableRow( gameNum, dth, ast, wp, wk ) {
+		document.getElementById('deathsG' + gameNum).innerHTML = dth;
+		document.getElementById('assistsG' + gameNum).innerHTML = ast;
+		document.getElementById('wpG' + gameNum).innerHTML = wp;
+		document.getElementById('wkG' + gameNum).innerHTML = wk;
+
+	}
+
 	//gets the game data we need
-	function getGameInfo( game ) {
+	function getGameInfo( game, gameNum ) {
 		var currWardsPlaced = typeof game.wardPlaced === 'undefined' ? 0 : game.wardPlaced;
 		var currVisionBought = typeof game.visionWardsBought === 'undefined' ? 0 : game.visionWardsBought;
 		var currWardsKilled = typeof game.wardKilled === 'undefined' ? 0 : game.wardKilled;
@@ -44,9 +44,12 @@ function main () {
 		var numAssists = typeof game.assists === 'undefined' ? 0 : game.assists;
 		
 		deaths.push(numDeaths);
-		assists.push(numassists);
+		assists.push(numAssists);
 		wards.push(currWardsPlaced + currVisionBought);
 		wardsKilled.push(currWardsKilled);
+
+		populateTableRow(gameNum, numDeaths, numAssists, currWardsPlaced+currVisionBought, 
+			currWardsKilled);
 		
 		console.log('deaths: ' + game.numDeaths);
 		console.log('assists: ' + game.assists);
@@ -54,10 +57,7 @@ function main () {
 		console.log('wards killed: ' + currWardsKilled);
 	}
 
-	//take game information and populate table in html doc
-	function populateTableRow() {
 
-	}
 
 	//response is the object returned, parsing the string value returned from getHttp
 	var response = JSON.parse(getHttp( baseApi + summApi + key));
@@ -74,10 +74,12 @@ function main () {
 
 	console.log(recentGames);
 
+	var gameNumber = 1;
+
 	//Get info from last 10 games
 	for (game in recentGames){
 		var curr = recentGames[game].stats;
-		getGameInfo( curr );
+		getGameInfo( curr, gameNumber );
 	}
 
 	//Calculate totals of last 10 games
