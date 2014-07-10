@@ -10,7 +10,7 @@ function getInfoFromForm(summonerName, region) {
 
 function main () {
     //key is the dev id key, riot api and wmata api are the api's I'm trying to access.
-    var key = '9910cbfe-cf9b-4c46-af93-8c75cb9b99a6'; //insert your own key
+    var key = ''; //insert your own key
     var summToSearch = document.getElementById("summoner").value; //insert your own summmoner name
 	var region = document.getElementById("region").value.toLowerCase(); //insert your own region
 	console.log(summToSearch + " " + typeof(region));
