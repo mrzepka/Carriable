@@ -1,18 +1,15 @@
 function main() {
     //Set variables for use in get requests
     var key = ''; //insert your own key
-    var summToSearch = document.getElementById("summoner").value; //insert your own summmoner name
-	var region = document.getElementById("region").value.toLowerCase(); //insert your own region
-	console.log(summToSearch + " " + typeof(region));
-
-	var baseApi = 'https://na.api.pvp.net'
-	var summApi = '/api/lol/' + region + '/v1.4/summoner/by-name/' + 
+    var summToSearch = document.getElementById("summoner").value, //insert your own summmoner name
+		region = document.getElementById("region").value.toLowerCase(), //insert your own region
+		baseApi = 'https://na.api.pvp.net',
+		summApi = '/api/lol/' + region + '/v1.4/summoner/by-name/' + 
 				summToSearch + '?api_key=';
 
 	//Here are all the stats we'll need to calculate carriability
-	var deaths = [], assists = [], wards = [], wardsKilled = [];
-	var totDeaths = 0, totAssists = 0, totWards = 0, totWardsKilled = 0;
-	var i;
+	var deaths = [], assists = [], wards = [], wardsKilled = [],
+		totDeaths = 0, totAssists = 0, totWards = 0, totWardsKilled = 0, i;
 
 
 	//Runs get request via JS, used to get the info needed
@@ -36,12 +33,14 @@ function main() {
 
 	//gets the game data we need
 	function getGameInfo( game, gameNum ) {
-		var currWardsPlaced = typeof game.wardPlaced === 'undefined' ? 0 : game.wardPlaced;
-		var currVisionBought = typeof game.visionWardsBought === 'undefined' ? 0 : game.visionWardsBought;
-		var currWardsKilled = typeof game.wardKilled === 'undefined' ? 0 : game.wardKilled;
-		var numDeaths = typeof game.numDeaths === 'undefined' ? 0 : game.numDeaths;
-		var numAssists = typeof game.assists === 'undefined' ? 0 : game.assists;
+		var currWardsPlaced = typeof game.wardPlaced === 'undefined' ? 0 : game.wardPlaced,
+			currVisionBought = typeof game.visionWardsBought === 'undefined' ? 0 : game.visionWardsBought,
+			currWardsKilled = typeof game.wardKilled === 'undefined' ? 0 : game.wardKilled,
+			numDeaths = typeof game.numDeaths === 'undefined' ? 0 : game.numDeaths,
+			numAssists = typeof game.assists === 'undefined' ? 0 : game.assists;
 		
+		console.log("team id: " + game.teamId);
+
 		deaths.push(numDeaths);
 		assists.push(numAssists);
 		wards.push(currWardsPlaced + currVisionBought);
@@ -71,7 +70,7 @@ function main() {
 	var response = JSON.parse(getHttp( baseApi + gamesApi + key));
 	var recentGames = response['games'];
 
-	console.log(recentGames);
+	console.log(response);
 
 	var gameNumber = 1;
 
@@ -90,22 +89,19 @@ function main() {
 		totWardsKilled += wardsKilled[i];
 	}
 
-	var avgDeaths = totDeaths/10;
-	var avgAssists = totAssists/10;
-	var avgWards = totWards/10;
-	var avgWardsKilled = totWardsKilled/10;
+	var avgDeaths = totDeaths/10,
+		avgAssists = totAssists/10,
+		avgWards = totWards/10,
+		avgWardsKilled = totWardsKilled/10;
 
+	document.getElementById("avgDeaths").textContent = "Deaths Per Game: " + avgDeaths;
+	document.getElementById("avgAssists").textContent = "Assists Per Game: " + avgAssists;
+	document.getElementById("avgWardsPlaced").textContent = "Wards Placed Per Game: " + avgWards;
+	document.getElementById("avgWardsKilled").textContent = "Wards Killed Per Game: " + avgWardsKilled;
 	console.log('avg deaths: ' + avgDeaths);
 	console.log('avg assists: ' + avgAssists);
 	console.log('avg wards: ' + avgWards);
 	console.log('avg wards killed: ' + avgWardsKilled);
-
-
-
-
-	console.log(response);
-
-	console.log(typeof response);
 
 	return false;
 
