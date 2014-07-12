@@ -2,6 +2,7 @@
 <html>
 <head>
 	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+	<link rel="stylesheet" href="riotStyle.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Riot API Test</title>
 	
@@ -16,22 +17,30 @@
 			
 			<label for="region">Region</label>
 			<select id="region" value="value">
-				<option>NA</option>
+				<option>BR</option>
+				<option>EUNE</option>
 				<option>EUW</option>
+				<option>KR</option>
+				<option>LAN</option>
+				<option>LAS</option>
+				<option>NA</option>
+				<option>OCE</option>
+				<option>RU</option>
+				<option>TR</option>
 			</select>
 			
-			<button type="submit" class="pure-button pure-button-primary">Submit</button>
+			<button type="submit" class="pure-button pure-button-primary" >Submit</button>
 		</fieldset>
 	</form>
 
-	<div class="pure-g">
-	    <div class="pure-u-1-4"><p id="avgDeaths">Thirds</p></div>
-	    <div class="pure-u-1-4"><p id="avgAssists">Thirds</p></div>
-	    <div class="pure-u-1-4"><p id="avgWardsPlaced">Thirds</p></div>
-	    <div class="pure-u-1-4"><p id="avgWardsKilled">Fourths</p></div>
+	<div class="pure-g" align="center">
+	    <div class="pure-u-1-4"><p id="avgDeaths">Deaths Per Game:</p></div>
+	    <div class="pure-u-1-4"><p id="avgAssists">Assists Per Game:</p></div>
+	    <div class="pure-u-1-4"><p id="avgWardsPlaced">Wards Placed Per Game:</p></div>
+	    <div class="pure-u-1-4"><p id="avgWardsKilled">Wards Killed Per Game:</p></div>
 	</div>
 
-	<table class="pure-table">
+	<table class="pure-table" align="center">
 		<thead>
 			<tr>
 				<th>Game</th>
@@ -42,84 +51,84 @@
 			</tr>
 		</thead>
 
-		<tbody>
+		<tbody align="center">
 			<tr>
 				<td>1</td>
-				<td id="deathsG1"></td>
-				<td id="assistsG1"></td>
-				<td id="wpG1"></td>
-				<td id="wkG1"></td>
+				<td id="deathsG1">-</td>
+				<td id="assistsG1">-</td>
+				<td id="wpG1">-</td>
+				<td id="wkG1">-</td>
 			</tr>
 
 			<tr>
 				<td>2</td>
-				<td id="deathsG2">holder 1</td>
-				<td id="assistsG2">holder 2</td>
-				<td id="wpG2">holder 3</td>
-				<td id="wkG2">holder 4</td>
+				<td id="deathsG2">-</td>
+				<td id="assistsG2">-</td>
+				<td id="wpG2">-</td>
+				<td id="wkG2">-</td>
 			</tr>
 
 			<tr>
 				<td>3</td>
-				<td id="deathsG3">holder 1</td>
-				<td id="assistsG3">holder 2</td>
-				<td id="wpG3">holder 3</td>
-				<td id="wkG3">holder 4</td>
+				<td id="deathsG3">-</td>
+				<td id="assistsG3">-</td>
+				<td id="wpG3">-</td>
+				<td id="wkG3">-</td>
 			</tr>
 
 			<tr>
 				<td>4</td>
-				<td id="deathsG4">holder 1</td>
-				<td id="assistsG4">holder 2</td>
-				<td id="wpG4">holder 3</td>
-				<td id="wkG4">holder 4</td>
+				<td id="deathsG4">-</td>
+				<td id="assistsG4">-</td>
+				<td id="wpG4">-</td>
+				<td id="wkG4">-</td>
 			</tr>
 			<tr>
 				<td>5</td>
-				<td id="deathsG5">holder 1</td>
-				<td id="assistsG5">holder 2</td>
-				<td id="wpG5">holder 3</td>
-				<td id="wkG5">holder 4</td>
+				<td id="deathsG5">-</td>
+				<td id="assistsG5">-</td>
+				<td id="wpG5">-</td>
+				<td id="wkG5">-</td>
 			</tr>
 
 			<tr>
 				<td>6</td>
-				<td id="deathsG6"></td>
-				<td id="assistsG6"></td>
-				<td id="wpG6"></td>
-				<td id="wkG6"></td>
+				<td id="deathsG6">-</td>
+				<td id="assistsG6">-</td>
+				<td id="wpG6">-</td>
+				<td id="wkG6">-</td>
 			</tr>
 
 			<tr>
 				<td>7</td>
-				<td id="deathsG7">holder 1</td>
-				<td id="assistsG7">holder 2</td>
-				<td id="wpG7">holder 3</td>
-				<td id="wkG7">holder 4</td>
+				<td id="deathsG7">-</td>
+				<td id="assistsG7">-</td>
+				<td id="wpG7">-</td>
+				<td id="wkG7">-</td>
 			</tr>
 
 			<tr>
 				<td>8</td>
-				<td id="deathsG8">holder 1</td>
-				<td id="assistsG8">holder 2</td>
-				<td id="wpG8">holder 3</td>
-				<td id="wkG8">holder 4</td>
+				<td id="deathsG8">-</td>
+				<td id="assistsG8">-</td>
+				<td id="wpG8">-</td>
+				<td id="wkG8">-</td>
 			</tr>
 
 			<tr>
 				<td>9</td>
-				<td id="deathsG9">holder 1</td>
-				<td id="assistsG9">holder 2</td>
-				<td id="wpG9">holder 3</td>
-				<td id="wkG9">holder 4</td>
+				<td id="deathsG9">-</td>
+				<td id="assistsG9">-</td>
+				<td id="wpG9">-</td>
+				<td id="wkG9">-</td>
 			</tr>
 
 			<tr>
 				<td>10</td>
-				<td id="deathsG10">holder 1</td>
-				<td id="assistsG10">holder 2</td>
-				<td id="wpG10">holder 3</td>
-				<td id="wkG10">holder 4</td>
+				<td id="deathsG10">-</td>
+				<td id="assistsG10">-</td>
+				<td id="wpG10">-</td>
+				<td id="wkG10">-</td>
 			</tr>
 		</tbody>
 
